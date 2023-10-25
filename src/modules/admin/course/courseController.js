@@ -18,6 +18,9 @@ const createCourse = catchAsync(async (req, res) => {
     "instructor_name",
     "course_brief_description",
     "course_description",
+    "course_duration",
+    "lectures",
+    "section_count"
   ]);
   const options = pick(req.body, ["sortBy", "limit", "page"]);
   const admin = await coursesService.createCourse(filter, options);
@@ -113,7 +116,7 @@ const createSectionDetails = catchAsync(async (req, res) => {
   if (!courseInclude) {
     throw new ApiError(
       httpStatus.INTERNAL_SERVER_ERROR,
-      "Unable to Create course Include"
+      "Unable to Create lectures"
     );
   }
   res.status(httpStatus.OK).send({

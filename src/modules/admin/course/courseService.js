@@ -25,6 +25,9 @@ const createCourse = async (filter, options) => {
     instructor_name: filter.instructor_name || null,
     is_best_course: 0,
     course_brief_description: filter.course_brief_description || null,
+    course_duration: filter.course_duration || null,
+    lectures: filter.lectures || null,
+    section_count: filter.section_count || null,
     course_description: filter.course_description || null,
     course_rating: null, // Initialize course_rating as null
     rating_in_numbers: null, // Initialize rating_in_numbers as null
@@ -124,6 +127,8 @@ const createSectionDetails = async (
     throw new ApiError(httpStatus.BAD_REQUEST, "Admin not found");
   }
 
+  console.log("AdminDoc=======>>>>>>>",AdminDoc)
+
   const existingSectionDoc = await courseSection.findOne({
     where: { course_id: course_id, section_id: section_id },
   });
@@ -131,6 +136,7 @@ const createSectionDetails = async (
   if (!existingSectionDoc) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Section and course not found");
   }
+  console.log("coursedetails=======>>>>>>>",course_id,section_id)
 
   const courseSectionObj = {
     course_id: course_id,

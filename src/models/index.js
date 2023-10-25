@@ -17,6 +17,7 @@ const { studentReviews } = require("./Courses/studentReviews");
 const { courseInclude } = require("./Courses/courseInclude");
 const {userProgress} = require("./Courses/userProgress")
 const {CalculatorOutput} = require("./Calculator/calculatorOutput.js")
+const {contactForm} = require("./Contact/contactForm")
 
 module.exports = {
   UserToken,
@@ -36,5 +37,6 @@ module.exports = {
   courseWatchlist,
   Course,
   studentReviews,
-  userProgress
+  userProgress,
+  contactForm
 };
